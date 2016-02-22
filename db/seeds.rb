@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+1.upto(50) do |i|
+	Contact.create(name: "name #{i}", 
+					address: "address #{i}", 
+					phone_number: "#{i}#{i}#{i}-#{i}#{i}#{i}#{i}",
+					email_address: "email#{i}@address.com")
+end
