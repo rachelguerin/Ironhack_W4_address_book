@@ -10,29 +10,29 @@
 <form action="/contacts" method="POST">
   <div>
     <label for="contact_name">Name</label>
-    <input type="text" name="contact[name]" id="contact_name">
+    <input type="text" name="contact[name]" id="contact_name" value="">
   </div>
 
   <div>
     <label for="contact_address">Address</label>
-    <textarea name="contact[address]" id="contact_address"></textarea>
+    <textarea name="contact[address]" id="contact_address" value=""></textarea>
   </div>
 
   <div>
     <label for="contact_phone">Phone number</label>
-    <input type="tel" name="contact[phone]" id="contact_phone">
+    <input type="tel" name="contact[phone]" id="contact_phone" value="">
   </div>
 
   <div>
     <label for="contact_email">Email</label>
-    <input type="email" name="contact[email]" id="contact_email">
+    <input type="email" name="contact[email]" id="contact_email" value="">
   </div>
   <input type="hidden" name="authenticity_token"
       value="<%= form_authenticity_token %>">
   <button type="submit">Add this contact</button>
 </form>
 <% if @err.present? %>
-	<p>Please enter a name and address.</p>
+	<p><%=@err%> </p>
 <% end %>
 </body>
 </html>

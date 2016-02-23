@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
 	end
 
 	def new
-		@err = params[:err]
+		@err = Contact.get_error(params[:err])
 	end
 
 	def create
@@ -16,17 +16,32 @@ class ContactsController < ApplicationController
 			:email_address => params[:contact][:email]
 		)
 
-		if contact.check
+		if contact.name.blank? || contact.address.blank? 
+			redirect_to('/contacts/new/error_name')
+		elsif contact.check_phone
+			redirect_to('/contacts/new/error_phone')
+		elsif contact.check_email
+			redirect_to('/contacts/new/error_email')
+		else
 			contact.save
 			redirect_to('/contacts')
-		else
-			redirect_to('/contacts/new/error')
-		end 
+		end
 
 	end
 
 	def show
-		# render(:text => params[:id].inspect)
 		@contact = Contact.get_contact(params[:id])
+	end
+
+	def favourite
+		contact = Contact.get_contact(params[:id])
+		contact.set_favourite
+		contact.save
+		redirect_to('/contacts/favourites')
+	end
+
+	def favourites
+		@contacts = Contact.get_favourites_list
+
 	end
 end

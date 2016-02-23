@@ -10,5 +10,11 @@
 	<p><%="Address: #{@contact.address}"%></p>
 	<p><%="Phone: #{@contact.phone_number}"%></p>
 	<p><%="Email: #{@contact.email_address}"%></p>
+	<p><%="Is favourite: #{@contact.get_favourite}"%></p>
+	<form action=<%="/contacts/favourite/#{@contact.id}"%> method="POST">
+	<input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+		<button type="submit">Mark as favourite</button>
+	</form>
 </body>
 </html>

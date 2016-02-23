@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get '/contacts/show/:id' => 'contacts#show'
 
   get '/contacts/new/:err' => 'contacts#new'
+
+  post '/contacts/favourite/:id' => 'contacts#favourite'
+
+  get '/contacts/favourites' => 'contacts#favourites'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
