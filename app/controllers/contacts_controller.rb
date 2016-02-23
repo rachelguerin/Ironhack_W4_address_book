@@ -44,4 +44,8 @@ class ContactsController < ApplicationController
 		@contacts = Contact.get_favourites_list
 
 	end
+
+	def search
+		@contacts = Contact.where("name like '#{params[:search_term]}%'")
+	end
 end

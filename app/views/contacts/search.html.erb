@@ -1,0 +1,11 @@
+<h1>Contact List</h1>
+
+<p><a href="/contacts/new">Add new contact</a></p>
+	<p><a href="/contacts/favourites">Go to favourites</a></p>
+<p>Search results: <em><%=params[:search_term]%></em></p>
+
+	<ul>
+	<% @contacts.each do |contact| %>
+		<li><a href=<%="/contacts/show/#{contact.id}"%>>
+		<%="#{contact.name} - #{contact.address} - #{contact.phone_number} - #{contact.email_address}"%></a></li>
+	<%end%></ul>
